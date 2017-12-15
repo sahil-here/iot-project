@@ -170,7 +170,7 @@ $(document).ready(function () {
                   
                   threshold = defaultThreshold;
                   var minVoltage = 250;
-                  if(obj.voltage>threshold){
+                  if(obj.voltage>400){
                       step = 1;
                   }
                   
