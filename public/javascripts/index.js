@@ -85,7 +85,7 @@ $(document).ready(function () {
                                               });
                   
                   var myLineChart2 = new Chart(ctx2, {
-                                              type: 'line',
+                                              type: 'stepLine',
                                               data: data2,
                                               options: basicOption2
                                               });
@@ -104,10 +104,15 @@ $(document).ready(function () {
                    return;
                    }*/
                   
+                  int step = 0;
+                  if(obj.voltage>100){
+                  step = 1;
+                  }
+                  
                   
                   timeData.push(obj.time);
                   temperatureData.push(obj.voltage);
-                  repData.push(obj.voltage);
+                  repData.push(step);
                   // only keep no more than 50 points in the line chart
                   const maxLen = 50;
                   var len = timeData.length;
