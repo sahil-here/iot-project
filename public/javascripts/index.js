@@ -6,6 +6,23 @@ $(document).ready(function () {
                   datasets: [
                              {
                              fill: false,
+                             label: 'Intensity',
+                             yAxisID: 'Peaks',
+                             borderColor: "rgba(255, 204, 0, 1)",
+                             pointBoarderColor: "rgba(255, 204, 0, 1)",
+                             backgroundColor: "rgba(255, 204, 0, 0.4)",
+                             pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
+                             pointHoverBorderColor: "rgba(255, 204, 0, 1)",
+                             data: temperatureData
+                             }
+                             ]
+                  }
+                  
+                  var data2 = {
+                  labels: timeData,
+                  datasets: [
+                             {
+                             fill: false,
                              label: 'Peaks',
                              yAxisID: 'Peaks',
                              borderColor: "rgba(255, 204, 0, 1)",
@@ -21,7 +38,7 @@ $(document).ready(function () {
                   var basicOption = {
                   title: {
                   display: true,
-                  text: 'Peaks Real-time Data',
+                  text: 'Intensity Real-time Data',
                   fontSize: 36
                   },
                   scales: {
@@ -29,7 +46,7 @@ $(document).ready(function () {
                           id: 'Peaks',
                           type: 'linear',
                           scaleLabel: {
-                          labelString: 'Temperature(C)',
+                          labelString: 'Intensity',
                           display: true
                           },
                           position: 'left',
