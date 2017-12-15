@@ -2,7 +2,7 @@ $(document).ready(function () {
                   var timeData = [],
                   temperatureData = [],
                   threshold = 0,
-                  defaultThreshold = 800,
+                  defaultThreshold = 250,
                   initialValues = [],
                   setData = [],
                   repCount = 0,
@@ -155,7 +155,7 @@ $(document).ready(function () {
                   var step = 0;
                  
                   var length = initialValues.length;
-                  if(length<10){
+               /*   if(length<10){
                       initialValues.push(obj.voltage);
                       threshold = defaultThreshold;
                   }else if(length == 10){
@@ -166,7 +166,9 @@ $(document).ready(function () {
                       threshold /= 10;
                   }else{
                       // Keep the same threshold that was calculated initially
-                  }
+                  }*/
+                  
+                  threshold = defaultThreshold;
                   
                   if(obj.voltage>threshold){
                       step = 1;
