@@ -85,7 +85,7 @@ $(document).ready(function () {
                                               });
                   
                   var myLineChart2 = new Chart(ctx2, {
-                                              type: 'stepLine',
+                                              type: 'bar',
                                               data: data2,
                                               options: basicOption2
                                               });
