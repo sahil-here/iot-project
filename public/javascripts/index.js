@@ -178,7 +178,7 @@ $(document).ready(function () {
                           flexCount++;
                       }
                   }
-                  var avgSetsDone = flexCount/5;
+                  var avgSetsDone = flexCount/12;
                   
                   timeData.push(obj.time);
                   temperatureData.push(obj.voltage);
