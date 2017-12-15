@@ -169,8 +169,8 @@ $(document).ready(function () {
                   }*/
                   
                   threshold = defaultThreshold;
-                  var minVoltage = 250;
-                  if(obj.voltage>400){
+                  var minVoltage = 450;
+                  if(obj.voltage>450){
                       step = 1;
                   }
                   
@@ -183,10 +183,10 @@ $(document).ready(function () {
                   var avgSetsDone = flexCount/12;
                   
                   timeData.push(obj.time);
-                  if(obj.voltage>250){
+                  if(obj.voltage>450){
                       temperatureData.push(obj.voltage);
                   }else{
-                      temperatureData.push(250);
+                      temperatureData.push(450);
                   }
                   
                   repData.push(step);
