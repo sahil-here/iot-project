@@ -169,7 +169,7 @@ $(document).ready(function () {
                   }*/
                   
                   threshold = defaultThreshold;
-                  
+                  var minVoltage = 250;
                   if(obj.voltage>threshold){
                       step = 1;
                   }
@@ -183,7 +183,12 @@ $(document).ready(function () {
                   var avgSetsDone = flexCount/12;
                   
                   timeData.push(obj.time);
-                  temperatureData.push(obj.voltage);
+                  if(obj.voltage>250){
+                      temperatureData.push(obj.voltage);
+                  }else{
+                      temperatureData.push(250);
+                  }
+                  
                   repData.push(step);
                   setData.push(avgSetsDone);
                   // only keep no more than 50 points in the line chart
