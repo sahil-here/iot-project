@@ -104,7 +104,7 @@ $(document).ready(function () {
                    return;
                    }*/
                   
-                  int step = 0;
+                  var step = 0;
                   if(obj.voltage>100){
                   step = 1;
                   }
