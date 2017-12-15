@@ -1,6 +1,7 @@
 $(document).ready(function () {
                   var timeData = [],
-                  temperatureData = [];
+                  temperatureData = [],
+                  repData = [];
                   var data = {
                   labels: timeData,
                   datasets: [
@@ -23,16 +24,35 @@ $(document).ready(function () {
                   datasets: [
                              {
                              fill: false,
-                             label: 'Peaks',
-                             yAxisID: 'Peaks',
+                             label: 'Rep',
+                             yAxisID: 'Rep',
                              borderColor: "rgba(255, 204, 0, 1)",
                              pointBoarderColor: "rgba(255, 204, 0, 1)",
                              backgroundColor: "rgba(255, 204, 0, 0.4)",
                              pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
                              pointHoverBorderColor: "rgba(255, 204, 0, 1)",
-                             data: temperatureData
+                             data: repData
                              }
                              ]
+                  }
+                  
+                  var basicOption2 = {
+                  title: {
+                  display: true,
+                  text: 'Rep Real-time Data',
+                  fontSize: 36
+                  },
+                  scales: {
+                  yAxes: [{
+                          id: 'Rep',
+                          type: 'linear',
+                          scaleLabel: {
+                          labelString: 'Rep',
+                          display: true
+                          },
+                          position: 'left',
+                          }]
+                  }
                   }
                   
                   var basicOption = {
@@ -63,6 +83,12 @@ $(document).ready(function () {
                                               options: basicOption
                                               });
                   
+                  var myLineChart2 = new Chart(ctx, {
+                                              type: 'line',
+                                              data: data2,
+                                              options: basicOption2
+                                              });
+                  
                   var ws = new WebSocket('wss://' + location.host);
                   ws.onopen = function () {
                   console.log('Successfully connect WebSocket');
@@ -80,15 +106,18 @@ $(document).ready(function () {
                   
                   timeData.push(obj.time);
                   temperatureData.push(obj.voltage);
+                  repData.push(obj.voltage);
                   // only keep no more than 50 points in the line chart
                   const maxLen = 50;
                   var len = timeData.length;
                   if (len > maxLen) {
                   timeData.shift();
                   temperatureData.shift();
+                  repData.shift();
                   }
                   
                   myLineChart.update();
+                  myLineChart2.update();
                   } catch (err) {
                   console.error(err);
                   }
