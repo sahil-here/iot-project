@@ -1,6 +1,6 @@
 $(document).ready(function () {
                   var timeData = [],
-                  temperatureData = [],
+                  intensityData = [],
                   threshold = 0,
                   defaultThreshold = 250,
                   initialValues = [],
@@ -19,7 +19,7 @@ $(document).ready(function () {
                              backgroundColor: "rgba(255, 204, 0, 0.4)",
                              pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
                              pointHoverBorderColor: "rgba(255, 204, 0, 1)",
-                             data: temperatureData
+                             data: intensityData
                              }
                              ]
                   }
@@ -146,30 +146,8 @@ $(document).ready(function () {
                   console.log('receive message' + message.data);
                   try {
                   var obj = JSON.parse(message.data);
-                  
-                  /*
-                   if(!obj.time || !obj.voltage) {
-                   return;
-                   }*/
-                  
                   var step = 0;
                  
-                  var length = initialValues.length;
-               /*   if(length<10){
-                      initialValues.push(obj.voltage);
-                      threshold = defaultThreshold;
-                  }else if(length == 10){
-                      threshold = 0;
-                      for(var i=0;i<10;i++){
-                          threshold += initialValues[i];
-                      }
-                      threshold /= 10;
-                  }else{
-                      // Keep the same threshold that was calculated initially
-                  }*/
-                  
-                  threshold = defaultThreshold;
-                  var minVoltage = 450;
                   if(obj.voltage>450){
                       step = 1;
                   }
@@ -184,9 +162,9 @@ $(document).ready(function () {
                   
                   timeData.push(obj.time);
                   if(obj.voltage>450){
-                      temperatureData.push(obj.voltage);
+                      intensityData.push(obj.voltage);
                   }else{
-                      temperatureData.push(450);
+                      intensityData.push(450);
                   }
                   
                   repData.push(step);
@@ -196,7 +174,7 @@ $(document).ready(function () {
                   var len = timeData.length;
                   if (len > maxLen) {
                   timeData.shift();
-                  temperatureData.shift();
+                  intensityData.shift();
                   repData.shift();
                   setData.shift();
                   }
